@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../resource/bootstrap-4.0.0-beta.2/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../resource/custom/css/doc.css" >
+    <link rel="stylesheet" href="../resource/ionicons-2.0.1/css/ionicons.min.css" >
+    <link rel="stylesheet" href="../resource/wenui-popover-1.2.1/jquery.webui-popover.css" >
+    <script src="../resource/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script src="../resource/wenui-popover-1.2.1/jquery.webui-popover.js"></script>
+    <script src="../resource/sortable/Sortable.js"></script>
+    <script src="../resource/bootstrap-4.0.0-beta.2/js/popper.min.js"></script>
+    <script src="../resource/bootstrap-4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="../resource/custom/js/ly.js"></script>
+    <script src="../resource/custom/js/art/note.js"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-xl-2 ly-sidebar ly-sidebar-color">
+            <div class="container ly-container">
+                <button type="button" class="btn btn-outline-info btn-lg btn-block">
+                    返回首页
+                    <i class="icon ion-arrow-return-left"></i>
+                </button>
+            </div>
+            <div class="ly-create-wj" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <i class="icon ion-plus-round"></i>
+                <span>新建文集</span>
+            </div>
+
+            <div class="collapse" id="collapseExample" >
+                <div class="card card-body ly-create-wj-form">
+                    <form>
+                        <div class="form-group">
+                            <input id="wjName" type="text" class="form-control form-control-sm ly-form-control " placeholder="请输入你的文集名..." autofocus="autofocus"  autocomplete="off">
+                        </div>
+                        <button type="button" onclick="wjSubmit()" class="btn btn-outline-info btn-sm btn-right">创建你的文集</button>
+                        <a class="btn btn-outline-info btn-sm" data-toggle="collapse" href="#collapseExample" aria-controls="collapseExample">取消</a>
+                    </form>
+                </div>
+            </div>
+
+            <nav id="wjTitle" class="nav flex-column">
+
+            </nav>
+
+            <button type="button" class="btn btn-link ly-wz-trash">
+                <i class="icon ion-trash-a"></i>
+                <span>回收站</span>
+            </button>
+        </div>
+        <div class="col-md-4 col-xl-3 ly-sidebar2">
+            <button type="button" class="btn btn-link btn-block ly-create-wz-up">
+                <i class="icon ion-android-add-circle"></i>
+                <span>新建文章</span>
+            </button>
+            <nav class="nav flex-column" id="sort">
+                <li class="nav-item ly-nav2-item ly-nav2-active position-relative">
+                    <i class="icon ion-android-document position-absolute ly-nav2-il"></i>
+                    <div class="nav-link ly-nav2-item-link">
+                        <p class="text-truncate ly-nav2-item-t">无标题文章无标题文章无标题文章无标题文章无标题文章无标题文章</p>
+                        <p class="text-truncate ly-nav2-item-p">无标题文章无标题文章无标题文sdfasdfasdfdafsdfasdfasdfdafsdfasdfasdfdafsdfasdfasdf</p>
+                    </div>
+                    <span class="ly-nav2-item-s">字数:12</span>
+                    <a  class="position-absolute ly-nav2-i" data-toggle="popover" data-content="123" data-trigger="focus">
+                        <i class="icon ion-ios-gear"></i>
+                    </a>
+
+                </li>
+                <li class="nav-item ly-nav2-item position-relative">
+                    <i class="icon ion-android-document position-absolute ly-nav2-il"></i>
+                    <div class="nav-link ly-nav2-item-link">
+                        <p class="text-truncate ly-nav2-item-t">无标题文章无标题文章无标题文章无标题文章无标题文章无标题文章</p>
+                        <p class="text-truncate ly-nav2-item-p">无标题文章无标题文章无标题文sdfasdfasdfdafsdfasdfasdfdafsdfasdfasdfdafsdfasdfasdf</p>
+                    </div>
+                    <span class="ly-nav2-item-s">字数:12</span>
+                    <a  class="position-absolute ly-nav2-i" data-toggle="popover" data-content="3123" >
+                        <i class="icon ion-ios-gear"></i>
+                    </a>
+                </li>
+                <li class="nav-item ly-nav2-item position-relative">
+                    <i class="icon ion-android-document position-absolute ly-nav2-il"></i>
+                    <div class="nav-link ly-nav2-item-link">
+                        <p class="text-truncate ly-nav2-item-t">无标题文章无标题文章无标题文章无标题文章无标题文章无标题文章</p>
+                        <p class="text-truncate ly-nav2-item-p">无标题文章无标题文章无标题文sdfasdfasdfdafsdfasdfasdfdafsdfasdfasdfdafsdfasdfasdf</p>
+                    </div>
+                    <span class="ly-nav2-item-s">字数:12</span>
+                    <i class="icon ion-ios-gear position-absolute ly-nav2-i"></i>
+                </li>
+                <li class="nav-item ly-nav2-item position-relative">
+                    <i class="icon ion-android-document position-absolute ly-nav2-il"></i>
+                    <div class="nav-link ly-nav2-item-link">
+                        <p class="text-truncate ly-nav2-item-t">无标题文章无标题文章无标题文章无标题文章无标题文章无标题文章</p>
+                        <p class="text-truncate ly-nav2-item-p">无标题文章无标题文章无标题文sdfasdfasdfdafsdfasdfasdfdafsdfasdfasdfdafsdfasdfasdf</p>
+                    </div>
+                    <span class="ly-nav2-item-s">字数:12</span>
+                    <i class="icon ion-ios-gear position-absolute ly-nav2-i"></i>
+                </li>
+            </nav>
+            <button type="button" class="btn btn-link btn-block ly-create-wz-dw">
+                <i class="icon ion-plus-round"></i>
+                <span>在下方新建文章</span>
+            </button>
+        </div>
+        <main class="col-md-5 col-xl-7 ly-sidebar" role="main">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control ly-text text-truncate" value="无标题文章">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!-- 加载编辑器的容器 -->
+                        <script id="container" name="content" type="text/plain" class="ly-ue">
+                        </script>
+                        <!-- 配置文件 -->
+                        <script type="text/javascript" src="../resource/UEditor-1.4.3.3/ueditor.config.js"></script>
+                        <!-- 编辑器源码文件 -->
+                        <script type="text/javascript" src="../resource/UEditor-1.4.3.3/ueditor.all.js"></script>
+                        <!-- 实例化编辑器 -->
+                        <script type="text/javascript">
+                            var ue = UE.getEditor('container');
+
+                            ue.ready(function() {
+                                ue.setHeight($(window).height()-111);
+                            })
+                            $(window).resize(function() {
+                                ue.setHeight($(window).height()-111);
+                            });
+                            $(function () {
+                                $('[data-toggle="popover"]').popover();
+                            })
+                        </script>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+</div>
+<script>
+    //Sortable.create(sort, { /* options */ });
+//    $('#i1').webuiPopover({
+//        width:80,
+//        height:100,
+//        padding:false,
+//        animation:'pop',
+//        content:$('#open').html(),
+//    });
+//    content:$('#open').remove();
+</script>
+</body>
+</html>
