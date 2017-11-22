@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.loiye.core.mapper.HsDtMapper" >
+  <resultMap id="BaseResultMap" type="com.loiye.core.bean.HsDt" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="yh_id" property="yhId" jdbcType="INTEGER" />
+    <result column="dx_id" property="dxId" jdbcType="INTEGER" />
+    <result column="lx" property="lx" jdbcType="INTEGER" />
+    <result column="sj" property="sj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, yh_id, dx_id, lx, sj
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_hs_dt
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_hs_dt
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.loiye.core.bean.HsDt" >
+    insert into t_hs_dt (id, yh_id, dx_id, 
+      lx, sj)
+    values (#{id,jdbcType=INTEGER}, #{yhId,jdbcType=INTEGER}, #{dxId,jdbcType=INTEGER}, 
+      #{lx,jdbcType=INTEGER}, #{sj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.loiye.core.bean.HsDt" >
+    insert into t_hs_dt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="yhId != null" >
+        yh_id,
+      </if>
+      <if test="dxId != null" >
+        dx_id,
+      </if>
+      <if test="lx != null" >
+        lx,
+      </if>
+      <if test="sj != null" >
+        sj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="yhId != null" >
+        #{yhId,jdbcType=INTEGER},
+      </if>
+      <if test="dxId != null" >
+        #{dxId,jdbcType=INTEGER},
+      </if>
+      <if test="lx != null" >
+        #{lx,jdbcType=INTEGER},
+      </if>
+      <if test="sj != null" >
+        #{sj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.loiye.core.bean.HsDt" >
+    update t_hs_dt
+    <set >
+      <if test="yhId != null" >
+        yh_id = #{yhId,jdbcType=INTEGER},
+      </if>
+      <if test="dxId != null" >
+        dx_id = #{dxId,jdbcType=INTEGER},
+      </if>
+      <if test="lx != null" >
+        lx = #{lx,jdbcType=INTEGER},
+      </if>
+      <if test="sj != null" >
+        sj = #{sj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.loiye.core.bean.HsDt" >
+    update t_hs_dt
+    set yh_id = #{yhId,jdbcType=INTEGER},
+      dx_id = #{dxId,jdbcType=INTEGER},
+      lx = #{lx,jdbcType=INTEGER},
+      sj = #{sj,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

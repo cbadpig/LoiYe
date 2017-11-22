@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.loiye.core.mapper.YhMapper" >
+  <resultMap id="BaseResultMap" type="com.loiye.core.bean.Yh" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sj" property="sj" jdbcType="CHAR" />
+    <result column="yx" property="yx" jdbcType="VARCHAR" />
+    <result column="mm" property="mm" jdbcType="VARCHAR" />
+    <result column="nc" property="nc" jdbcType="VARCHAR" />
+    <result column="xb" property="xb" jdbcType="INTEGER" />
+    <result column="lx" property="lx" jdbcType="INTEGER" />
+    <result column="jsxx" property="jsxx" jdbcType="INTEGER" />
+    <result column="jsyxtz" property="jsyxtz" jdbcType="INTEGER" />
+    <result column="grms" property="grms" jdbcType="VARCHAR" />
+    <result column="zskg" property="zskg" jdbcType="INTEGER" />
+    <result column="zsms" property="zsms" jdbcType="VARCHAR" />
+    <result column="txtp" property="txtp" jdbcType="VARCHAR" />
+    <result column="zcsj" property="zcsj" jdbcType="VARCHAR" />
+    <result column="dlsj" property="dlsj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sj, yx, mm, nc, xb, lx, jsxx, jsyxtz, grms, zskg, zsms, txtp, zcsj, dlsj
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_yh
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_sys_yh
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.loiye.core.bean.Yh" >
+    insert into t_sys_yh (id, sj, yx, mm, 
+      nc, xb, lx, jsxx, 
+      jsyxtz, grms, zskg, 
+      zsms, txtp, zcsj, dlsj
+      )
+    values (#{id,jdbcType=INTEGER}, #{sj,jdbcType=CHAR}, #{yx,jdbcType=VARCHAR}, #{mm,jdbcType=VARCHAR}, 
+      #{nc,jdbcType=VARCHAR}, #{xb,jdbcType=INTEGER}, #{lx,jdbcType=INTEGER}, #{jsxx,jdbcType=INTEGER}, 
+      #{jsyxtz,jdbcType=INTEGER}, #{grms,jdbcType=VARCHAR}, #{zskg,jdbcType=INTEGER}, 
+      #{zsms,jdbcType=VARCHAR}, #{txtp,jdbcType=VARCHAR}, #{zcsj,jdbcType=VARCHAR}, #{dlsj,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.loiye.core.bean.Yh" >
+    insert into t_sys_yh
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sj != null" >
+        sj,
+      </if>
+      <if test="yx != null" >
+        yx,
+      </if>
+      <if test="mm != null" >
+        mm,
+      </if>
+      <if test="nc != null" >
+        nc,
+      </if>
+      <if test="xb != null" >
+        xb,
+      </if>
+      <if test="lx != null" >
+        lx,
+      </if>
+      <if test="jsxx != null" >
+        jsxx,
+      </if>
+      <if test="jsyxtz != null" >
+        jsyxtz,
+      </if>
+      <if test="grms != null" >
+        grms,
+      </if>
+      <if test="zskg != null" >
+        zskg,
+      </if>
+      <if test="zsms != null" >
+        zsms,
+      </if>
+      <if test="txtp != null" >
+        txtp,
+      </if>
+      <if test="zcsj != null" >
+        zcsj,
+      </if>
+      <if test="dlsj != null" >
+        dlsj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sj != null" >
+        #{sj,jdbcType=CHAR},
+      </if>
+      <if test="yx != null" >
+        #{yx,jdbcType=VARCHAR},
+      </if>
+      <if test="mm != null" >
+        #{mm,jdbcType=VARCHAR},
+      </if>
+      <if test="nc != null" >
+        #{nc,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null" >
+        #{xb,jdbcType=INTEGER},
+      </if>
+      <if test="lx != null" >
+        #{lx,jdbcType=INTEGER},
+      </if>
+      <if test="jsxx != null" >
+        #{jsxx,jdbcType=INTEGER},
+      </if>
+      <if test="jsyxtz != null" >
+        #{jsyxtz,jdbcType=INTEGER},
+      </if>
+      <if test="grms != null" >
+        #{grms,jdbcType=VARCHAR},
+      </if>
+      <if test="zskg != null" >
+        #{zskg,jdbcType=INTEGER},
+      </if>
+      <if test="zsms != null" >
+        #{zsms,jdbcType=VARCHAR},
+      </if>
+      <if test="txtp != null" >
+        #{txtp,jdbcType=VARCHAR},
+      </if>
+      <if test="zcsj != null" >
+        #{zcsj,jdbcType=VARCHAR},
+      </if>
+      <if test="dlsj != null" >
+        #{dlsj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.loiye.core.bean.Yh" >
+    update t_sys_yh
+    <set >
+      <if test="sj != null" >
+        sj = #{sj,jdbcType=CHAR},
+      </if>
+      <if test="yx != null" >
+        yx = #{yx,jdbcType=VARCHAR},
+      </if>
+      <if test="mm != null" >
+        mm = #{mm,jdbcType=VARCHAR},
+      </if>
+      <if test="nc != null" >
+        nc = #{nc,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null" >
+        xb = #{xb,jdbcType=INTEGER},
+      </if>
+      <if test="lx != null" >
+        lx = #{lx,jdbcType=INTEGER},
+      </if>
+      <if test="jsxx != null" >
+        jsxx = #{jsxx,jdbcType=INTEGER},
+      </if>
+      <if test="jsyxtz != null" >
+        jsyxtz = #{jsyxtz,jdbcType=INTEGER},
+      </if>
+      <if test="grms != null" >
+        grms = #{grms,jdbcType=VARCHAR},
+      </if>
+      <if test="zskg != null" >
+        zskg = #{zskg,jdbcType=INTEGER},
+      </if>
+      <if test="zsms != null" >
+        zsms = #{zsms,jdbcType=VARCHAR},
+      </if>
+      <if test="txtp != null" >
+        txtp = #{txtp,jdbcType=VARCHAR},
+      </if>
+      <if test="zcsj != null" >
+        zcsj = #{zcsj,jdbcType=VARCHAR},
+      </if>
+      <if test="dlsj != null" >
+        dlsj = #{dlsj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.loiye.core.bean.Yh" >
+    update t_sys_yh
+    set sj = #{sj,jdbcType=CHAR},
+      yx = #{yx,jdbcType=VARCHAR},
+      mm = #{mm,jdbcType=VARCHAR},
+      nc = #{nc,jdbcType=VARCHAR},
+      xb = #{xb,jdbcType=INTEGER},
+      lx = #{lx,jdbcType=INTEGER},
+      jsxx = #{jsxx,jdbcType=INTEGER},
+      jsyxtz = #{jsyxtz,jdbcType=INTEGER},
+      grms = #{grms,jdbcType=VARCHAR},
+      zskg = #{zskg,jdbcType=INTEGER},
+      zsms = #{zsms,jdbcType=VARCHAR},
+      txtp = #{txtp,jdbcType=VARCHAR},
+      zcsj = #{zcsj,jdbcType=VARCHAR},
+      dlsj = #{dlsj,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

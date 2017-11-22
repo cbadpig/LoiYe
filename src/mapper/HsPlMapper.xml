@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.loiye.core.mapper.HsPlMapper" >
+  <resultMap id="BaseResultMap" type="com.loiye.core.bean.HsPl" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="f_id" property="fId" jdbcType="INTEGER" />
+    <result column="zj_id" property="zjId" jdbcType="INTEGER" />
+    <result column="plyh_id" property="plyhId" jdbcType="INTEGER" />
+    <result column="dxyh_id" property="dxyhId" jdbcType="INTEGER" />
+    <result column="dzsl" property="dzsl" jdbcType="INTEGER" />
+    <result column="plsj" property="plsj" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.loiye.core.bean.HsPl" extends="BaseResultMap" >
+    <result column="plnr" property="plnr" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, f_id, zj_id, plyh_id, dxyh_id, dzsl, plsj
+  </sql>
+  <sql id="Blob_Column_List" >
+    plnr
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_hs_pl
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_hs_pl
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.loiye.core.bean.HsPl" >
+    insert into t_hs_pl (id, f_id, zj_id, 
+      plyh_id, dxyh_id, dzsl, 
+      plsj, plnr)
+    values (#{id,jdbcType=INTEGER}, #{fId,jdbcType=INTEGER}, #{zjId,jdbcType=INTEGER}, 
+      #{plyhId,jdbcType=INTEGER}, #{dxyhId,jdbcType=INTEGER}, #{dzsl,jdbcType=INTEGER}, 
+      #{plsj,jdbcType=VARCHAR}, #{plnr,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.loiye.core.bean.HsPl" >
+    insert into t_hs_pl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fId != null" >
+        f_id,
+      </if>
+      <if test="zjId != null" >
+        zj_id,
+      </if>
+      <if test="plyhId != null" >
+        plyh_id,
+      </if>
+      <if test="dxyhId != null" >
+        dxyh_id,
+      </if>
+      <if test="dzsl != null" >
+        dzsl,
+      </if>
+      <if test="plsj != null" >
+        plsj,
+      </if>
+      <if test="plnr != null" >
+        plnr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fId != null" >
+        #{fId,jdbcType=INTEGER},
+      </if>
+      <if test="zjId != null" >
+        #{zjId,jdbcType=INTEGER},
+      </if>
+      <if test="plyhId != null" >
+        #{plyhId,jdbcType=INTEGER},
+      </if>
+      <if test="dxyhId != null" >
+        #{dxyhId,jdbcType=INTEGER},
+      </if>
+      <if test="dzsl != null" >
+        #{dzsl,jdbcType=INTEGER},
+      </if>
+      <if test="plsj != null" >
+        #{plsj,jdbcType=VARCHAR},
+      </if>
+      <if test="plnr != null" >
+        #{plnr,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.loiye.core.bean.HsPl" >
+    update t_hs_pl
+    <set >
+      <if test="fId != null" >
+        f_id = #{fId,jdbcType=INTEGER},
+      </if>
+      <if test="zjId != null" >
+        zj_id = #{zjId,jdbcType=INTEGER},
+      </if>
+      <if test="plyhId != null" >
+        plyh_id = #{plyhId,jdbcType=INTEGER},
+      </if>
+      <if test="dxyhId != null" >
+        dxyh_id = #{dxyhId,jdbcType=INTEGER},
+      </if>
+      <if test="dzsl != null" >
+        dzsl = #{dzsl,jdbcType=INTEGER},
+      </if>
+      <if test="plsj != null" >
+        plsj = #{plsj,jdbcType=VARCHAR},
+      </if>
+      <if test="plnr != null" >
+        plnr = #{plnr,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.loiye.core.bean.HsPl" >
+    update t_hs_pl
+    set f_id = #{fId,jdbcType=INTEGER},
+      zj_id = #{zjId,jdbcType=INTEGER},
+      plyh_id = #{plyhId,jdbcType=INTEGER},
+      dxyh_id = #{dxyhId,jdbcType=INTEGER},
+      dzsl = #{dzsl,jdbcType=INTEGER},
+      plsj = #{plsj,jdbcType=VARCHAR},
+      plnr = #{plnr,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.loiye.core.bean.HsPl" >
+    update t_hs_pl
+    set f_id = #{fId,jdbcType=INTEGER},
+      zj_id = #{zjId,jdbcType=INTEGER},
+      plyh_id = #{plyhId,jdbcType=INTEGER},
+      dxyh_id = #{dxyhId,jdbcType=INTEGER},
+      dzsl = #{dzsl,jdbcType=INTEGER},
+      plsj = #{plsj,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.loiye.core.mapper.HsWzWjMapper" >
+  <resultMap id="BaseResultMap" type="com.loiye.core.bean.HsWzWj" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="wj_id" property="wjId" jdbcType="INTEGER" />
+    <result column="bt" property="bt" jdbcType="VARCHAR" />
+    <result column="ms" property="ms" jdbcType="VARCHAR" />
+    <result column="fm" property="fm" jdbcType="VARCHAR" />
+    <result column="wzzt" property="wzzt" jdbcType="INTEGER" />
+    <result column="wzzs" property="wzzs" jdbcType="INTEGER" />
+    <result column="ydsl" property="ydsl" jdbcType="INTEGER" />
+    <result column="plsl" property="plsl" jdbcType="INTEGER" />
+    <result column="xhsl" property="xhsl" jdbcType="INTEGER" />
+    <result column="zssl" property="zssl" jdbcType="INTEGER" />
+    <result column="fbsj" property="fbsj" jdbcType="VARCHAR" />
+    <result column="wzxh" property="wzxh" jdbcType="INTEGER" />
+    <result column="yh_id" property="yhId" jdbcType="INTEGER" />
+    <result column="nr" property="nr" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, wj_id, bt, ms, fm, wzzt, wzzs, ydsl, plsl, xhsl, zssl, fbsj, wzxh, yh_id, nr
+  </sql>
+
+  <select id="selectByYh" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT <include refid="Base_Column_List" />
+    FROM t_hs_wzwj
+    WHERE yh_id = #{yhId,jdbcType=INTEGER}
+    ORDER BY wj_id , wzxh ASC
+  </select>
+
+  <select id="selectMaxWzxh" resultType="java.lang.Integer">
+    SELECT MAX(wzxh) wzxh
+    FROM t_hs_wzwj
+    WHERE yh_id = #{yhId,jdbcType=INTEGER} AND wj_id = #{wjId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insertSelective" parameterType="com.loiye.core.bean.HsWzWj" >
+    insert into t_hs_wzwj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wjId != null" >
+        wj_id,
+      </if>
+      <if test="bt != null" >
+        bt,
+      </if>
+      <if test="ms != null" >
+        ms,
+      </if>
+      <if test="fm != null" >
+        fm,
+      </if>
+      <if test="wzzt != null" >
+        wzzt,
+      </if>
+      <if test="wzzs != null" >
+        wzzs,
+      </if>
+      <if test="ydsl != null" >
+        ydsl,
+      </if>
+      <if test="plsl != null" >
+        plsl,
+      </if>
+      <if test="xhsl != null" >
+        xhsl,
+      </if>
+      <if test="zssl != null" >
+        zssl,
+      </if>
+      <if test="fbsj != null" >
+        fbsj,
+      </if>
+      <if test="wzxh != null" >
+        wzxh,
+      </if>
+      <if test="yhId != null" >
+        yh_id,
+      </if>
+      <if test="nr != null" >
+        nr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="wjId != null" >
+        #{wjId,jdbcType=INTEGER},
+      </if>
+      <if test="bt != null" >
+        #{bt,jdbcType=VARCHAR},
+      </if>
+      <if test="ms != null" >
+        #{ms,jdbcType=VARCHAR},
+      </if>
+      <if test="fm != null" >
+        #{fm,jdbcType=VARCHAR},
+      </if>
+      <if test="wzzt != null" >
+        #{wzzt,jdbcType=INTEGER},
+      </if>
+      <if test="wzzs != null" >
+        #{wzzs,jdbcType=INTEGER},
+      </if>
+      <if test="ydsl != null" >
+        #{ydsl,jdbcType=INTEGER},
+      </if>
+      <if test="plsl != null" >
+        #{plsl,jdbcType=INTEGER},
+      </if>
+      <if test="xhsl != null" >
+        #{xhsl,jdbcType=INTEGER},
+      </if>
+      <if test="zssl != null" >
+        #{zssl,jdbcType=INTEGER},
+      </if>
+      <if test="fbsj != null" >
+        #{fbsj,jdbcType=VARCHAR},
+      </if>
+      <if test="wzxh != null" >
+        #{wzxh,jdbcType=INTEGER},
+      </if>
+      <if test="yhId != null" >
+        #{yhId,jdbcType=INTEGER},
+      </if>
+      <if test="nr != null" >
+        #{nr,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_hs_wzwj
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_hs_wzwj
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.loiye.core.bean.HsWzWj" >
+    insert into t_hs_wzwj (id, wj_id, bt,
+      ms, fm, wzzt, wzzs,
+      ydsl, plsl, xhsl, zssl,
+      fbsj, wzxh, yh_id, nr
+      )
+    values (#{id,jdbcType=INTEGER}, #{wjId,jdbcType=INTEGER}, #{bt,jdbcType=VARCHAR},
+      #{ms,jdbcType=VARCHAR}, #{fm,jdbcType=VARCHAR}, #{wzzt,jdbcType=INTEGER}, #{wzzs,jdbcType=INTEGER},
+      #{ydsl,jdbcType=INTEGER}, #{plsl,jdbcType=INTEGER}, #{xhsl,jdbcType=INTEGER}, #{zssl,jdbcType=INTEGER},
+      #{fbsj,jdbcType=VARCHAR}, #{wzxh,jdbcType=INTEGER}, #{yhId,jdbcType=INTEGER}, #{nr,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.loiye.core.bean.HsWzWj" >
+    insert into t_hs_wzwj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wjId != null" >
+        wj_id,
+      </if>
+      <if test="bt != null" >
+        bt,
+      </if>
+      <if test="ms != null" >
+        ms,
+      </if>
+      <if test="fm != null" >
+        fm,
+      </if>
+      <if test="wzzt != null" >
+        wzzt,
+      </if>
+      <if test="wzzs != null" >
+        wzzs,
+      </if>
+      <if test="ydsl != null" >
+        ydsl,
+      </if>
+      <if test="plsl != null" >
+        plsl,
+      </if>
+      <if test="xhsl != null" >
+        xhsl,
+      </if>
+      <if test="zssl != null" >
+        zssl,
+      </if>
+      <if test="fbsj != null" >
+        fbsj,
+      </if>
+      <if test="wzxh != null" >
+        wzxh,
+      </if>
+      <if test="yhId != null" >
+        yh_id,
+      </if>
+      <if test="nr != null" >
+        nr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="wjId != null" >
+        #{wjId,jdbcType=INTEGER},
+      </if>
+      <if test="bt != null" >
+        #{bt,jdbcType=VARCHAR},
+      </if>
+      <if test="ms != null" >
+        #{ms,jdbcType=VARCHAR},
+      </if>
+      <if test="fm != null" >
+        #{fm,jdbcType=VARCHAR},
+      </if>
+      <if test="wzzt != null" >
+        #{wzzt,jdbcType=INTEGER},
+      </if>
+      <if test="wzzs != null" >
+        #{wzzs,jdbcType=INTEGER},
+      </if>
+      <if test="ydsl != null" >
+        #{ydsl,jdbcType=INTEGER},
+      </if>
+      <if test="plsl != null" >
+        #{plsl,jdbcType=INTEGER},
+      </if>
+      <if test="xhsl != null" >
+        #{xhsl,jdbcType=INTEGER},
+      </if>
+      <if test="zssl != null" >
+        #{zssl,jdbcType=INTEGER},
+      </if>
+      <if test="fbsj != null" >
+        #{fbsj,jdbcType=VARCHAR},
+      </if>
+      <if test="wzxh != null" >
+        #{wzxh,jdbcType=INTEGER},
+      </if>
+      <if test="yhId != null" >
+        #{yhId,jdbcType=INTEGER},
+      </if>
+      <if test="nr != null" >
+        #{nr,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.loiye.core.bean.HsWzWj" >
+    update t_hs_wzwj
+    <set >
+      <if test="wjId != null" >
+        wj_id = #{wjId,jdbcType=INTEGER},
+      </if>
+      <if test="bt != null" >
+        bt = #{bt,jdbcType=VARCHAR},
+      </if>
+      <if test="ms != null" >
+        ms = #{ms,jdbcType=VARCHAR},
+      </if>
+      <if test="fm != null" >
+        fm = #{fm,jdbcType=VARCHAR},
+      </if>
+      <if test="wzzt != null" >
+        wzzt = #{wzzt,jdbcType=INTEGER},
+      </if>
+      <if test="wzzs != null" >
+        wzzs = #{wzzs,jdbcType=INTEGER},
+      </if>
+      <if test="ydsl != null" >
+        ydsl = #{ydsl,jdbcType=INTEGER},
+      </if>
+      <if test="plsl != null" >
+        plsl = #{plsl,jdbcType=INTEGER},
+      </if>
+      <if test="xhsl != null" >
+        xhsl = #{xhsl,jdbcType=INTEGER},
+      </if>
+      <if test="zssl != null" >
+        zssl = #{zssl,jdbcType=INTEGER},
+      </if>
+      <if test="fbsj != null" >
+        fbsj = #{fbsj,jdbcType=VARCHAR},
+      </if>
+      <if test="wzxh != null" >
+        wzxh = #{wzxh,jdbcType=INTEGER},
+      </if>
+      <if test="yhId != null" >
+        yh_id = #{yhId,jdbcType=INTEGER},
+      </if>
+      <if test="nr != null" >
+        nr = #{nr,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.loiye.core.bean.HsWzWj" >
+    update t_hs_wzwj
+    set wj_id = #{wjId,jdbcType=INTEGER},
+      bt = #{bt,jdbcType=VARCHAR},
+      ms = #{ms,jdbcType=VARCHAR},
+      fm = #{fm,jdbcType=VARCHAR},
+      wzzt = #{wzzt,jdbcType=INTEGER},
+      wzzs = #{wzzs,jdbcType=INTEGER},
+      ydsl = #{ydsl,jdbcType=INTEGER},
+      plsl = #{plsl,jdbcType=INTEGER},
+      xhsl = #{xhsl,jdbcType=INTEGER},
+      zssl = #{zssl,jdbcType=INTEGER},
+      fbsj = #{fbsj,jdbcType=VARCHAR},
+      wzxh = #{wzxh,jdbcType=INTEGER},
+      yh_id = #{yhId,jdbcType=INTEGER},
+      nr = #{nr,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.loiye.core.bean.HsWzWj" >
+    update t_hs_wzwj
+    set wj_id = #{wjId,jdbcType=INTEGER},
+      bt = #{bt,jdbcType=VARCHAR},
+      ms = #{ms,jdbcType=VARCHAR},
+      fm = #{fm,jdbcType=VARCHAR},
+      wzzt = #{wzzt,jdbcType=INTEGER},
+      wzzs = #{wzzs,jdbcType=INTEGER},
+      ydsl = #{ydsl,jdbcType=INTEGER},
+      plsl = #{plsl,jdbcType=INTEGER},
+      xhsl = #{xhsl,jdbcType=INTEGER},
+      zssl = #{zssl,jdbcType=INTEGER},
+      fbsj = #{fbsj,jdbcType=VARCHAR},
+      wzxh = #{wzxh,jdbcType=INTEGER},
+      yh_id = #{yhId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>-->
+</mapper>
