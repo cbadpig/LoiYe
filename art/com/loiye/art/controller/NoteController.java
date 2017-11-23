@@ -24,5 +24,10 @@ public class NoteController {
     public Result insertWjTitle(String bt) {
         return noteService.insertWjTitle(bt);
     }
+    
+    @PostMapping("/wzwj/insertWzTitle")
+    public Result insertWzTitle(String wjId,String type) {
+        return noteService.insertWzTile(Integer.parseInt(wjId),Integer.parseInt(type));
+    }
 
 }

@@ -53,7 +53,8 @@
             </button>
         </div>
         <div class="col-md-4 col-xl-3 ly-sidebar2">
-            <button type="button" class="btn btn-link btn-block ly-create-wz-up">
+            <button onclick="addWz(0)" type="button" class="btn btn-link btn-block ly-create-wz-up">
+            	<span id="wjId" hidden></span>
                 <i class="icon ion-android-add-circle"></i>
                 <span>新建文章</span>
             </button>
@@ -100,10 +101,10 @@
                     <i class="icon ion-ios-gear position-absolute ly-nav2-i"></i>
                 </li> -->
             </nav>
-            <button type="button" class="btn btn-link btn-block ly-create-wz-dw">
+           <!--  <button type="button" class="btn btn-link btn-block ly-create-wz-dw">
                 <i class="icon ion-plus-round"></i>
                 <span>在下方新建文章</span>
-            </button>
+            </button> -->
         </div>
         <main class="col-md-5 col-xl-7 ly-sidebar" role="main">
             <form>

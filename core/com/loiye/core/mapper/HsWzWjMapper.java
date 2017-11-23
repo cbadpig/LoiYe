@@ -22,6 +22,8 @@ public interface HsWzWjMapper {
     int selectMaxWzxh(@Param("yhId") Integer yhId, @Param("wjId") Integer wjId);
 
     int insertSelective(HsWzWj hsWzWj);
+    
+    int wzxhAllAddOne(@Param("yhId") Integer yhId, @Param("wjId") Integer wjId);
 
 //    int deleteByPrimaryKey(Integer id);
 //

@@ -8,6 +8,6 @@ public interface NoteService {
 
     Result insertWjTitle(String bt);
 
-    Result insertWzTile();
+    Result insertWzTile(int wjId,int type);
 
 }

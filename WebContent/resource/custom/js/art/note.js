@@ -1,7 +1,7 @@
 $(function () {
     init();
 });
-function init() {
+function init(type) {
     $.ajax({
         url:'ajax/note/wzwj',
         type:'get',
@@ -9,6 +9,9 @@ function init() {
         success:function (data) {
             if (data.flag) {
                 ly.huaishu.init(data.message);
+                if (type != 0) {
+                	ly.huaishu.createWjTitle();
+                }
             } else {
                 alert("创建失败");
             }
@@ -18,9 +21,15 @@ function init() {
         }
     });
 }
+
 function wjSubmit() {
     var wjName = $("#wjName").val();
 
+    if (!wjName) {
+    	alert("创建失败");
+    	return;
+    }
+    
     $.ajax({
         url:'ajax/note/wzwj/insertWjTitle/',
         type:'POST',
@@ -29,11 +38,42 @@ function wjSubmit() {
             bt:wjName
         },
         success:function (data) {
-            alert("创建成功");
+        	$('.collapse').collapse('hide');
+        	setTimeout(function () {
+        		init();
+        	},500);
+        	$("#wjName").val("");
         },
         error:function () {
             alert("创建失败");
         }
     });
-    
+}
+
+function addWz(type) {
+	
+	var wjId = $("#wjId").val();
+	
+	$.ajax({
+        url:'ajax/note/wzwj/insertWzTitle/',
+        type:'POST',
+        dataType:'json',
+        data:{
+        	wjId:wjId,
+        	type:type
+        },
+        success:function (data) {
+        	if (data.flag) {
+        		init(0);
+        		ly.huaishu.initWzTitle();
+        	}
+        	
+        	
+        },
+        error:function () {
+            alert("创建失败");
+        }
+    });
+	
+	
 }

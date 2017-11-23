@@ -48,8 +48,24 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Result insertWzTile() {
-        return null;
+    public Result insertWzTile(int wjId,int type) {
+    	
+    	int wzxh = 1;
+    	if (type == 0) {
+    		hsWzWjMapper.wzxhAllAddOne(1, wjId);
+    	} else {
+    		wzxh = selectMaxWzxhAdd(1,wjId);
+    	}
+    	
+    	HsWzWj hsWzWj = new HsWzWj();
+        hsWzWj.setWjId(wjId);
+        hsWzWj.setWzzt(0);
+        hsWzWj.setBt("无标题文章");
+        hsWzWj.setWzxh(wzxh);
+        hsWzWj.setWzzs(0);
+        hsWzWj.setYhId(1);
+        hsWzWjMapper.insertSelective(hsWzWj);
+        return Result.OK();
     }
 
     private void putMap(Map<Object,Object> map,List<HsWzWj> hsWzWjList) {
