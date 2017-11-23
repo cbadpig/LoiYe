@@ -27,7 +27,7 @@
     SELECT <include refid="Base_Column_List" />
     FROM t_hs_wzwj
     WHERE yh_id = #{yhId,jdbcType=INTEGER}
-    ORDER BY wj_id , wzxh ASC
+    ORDER BY wj_id , wzxh DESC
   </select>
 
   <select id="selectMaxWzxh" resultType="java.lang.Integer">

@@ -33,6 +33,11 @@ button {
 
     }
 }
+
+/**
+	第一菜单栏
+*/
+
 .ly-nav-item {
     display: block;
     border-left: 3px solid #3f3f3f;
@@ -43,11 +48,12 @@ button {
     color:white;
     padding: 0.6rem 2.6rem 0.6rem 1rem;
 }
-.ly-nav-item:focus, .ly-nav-item:hover {
+.ly-nav-item:focus, .ly-nav-item:hover{
     background-color:#646464;
     border-left: 3px solid #646464;
 }
-.ly-nav-active,.ly-nav-active:hover {
+
+.ly-nav-active,.ly-nav-active:hover{
     background-color:#646464;
     border-left: 3px solid #117a8b;
 }
