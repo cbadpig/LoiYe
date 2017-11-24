@@ -136,7 +136,7 @@
   
   <update id="wzxhAllAddOne" >
     UPDATE t_hs_wzwj 
-    SET wzxh = wzxh - 1 
+    SET wzxh = wzxh + 1 
     WHERE yh_id = #{yhId,jdbcType=INTEGER} AND wj_id = #{wjId,jdbcType=INTEGER}
   </update>
   <!--<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
