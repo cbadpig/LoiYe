@@ -65,7 +65,7 @@ public class NoteServiceImpl implements NoteService {
         hsWzWj.setWzzs(0);
         hsWzWj.setYhId(1);
         hsWzWjMapper.insertSelective(hsWzWj);
-        return Result.OK();
+        return Result.OK(hsWzWj);
     }
 
     private void putMap(Map<Object,Object> map,List<HsWzWj> hsWzWjList) {

@@ -65,7 +65,8 @@ function addWz(type) {
         success:function (data) {
         	if (data.flag) {
         		init(0);
-        		ly.huaishu.initWzTitle();
+        		ly.huaishu.initWzTitle(data.message);
+        		console.log(data.message);
         	}
         	
         	

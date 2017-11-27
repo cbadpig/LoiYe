@@ -15,8 +15,8 @@
     	createWjTitle:function() {
             ly.note.createWjTitle(ly.CACHE_BASE_HUAISHU_NOTE);
         },
-        initWzTitle:function () {
-            ly.note.initWzTitle();
+        initWzTitle:function (wz) {
+            ly.note.initWzTitle(ly.CACHE_BASE_HUAISHU_NOTE,wz);
         },
         init:function (data) {
             ly.note.init(ly.CACHE_BASE_HUAISHU_NOTE,data);
@@ -87,12 +87,12 @@
                             '<p class="text-truncate ly-nav2-item-p">'+ wz.bt +'</p>' +
                             '</div>' +
                             '<span class="ly-nav2-item-s">字数：'+ wz.wzzs +'</span>' +
-                            '<i class="icon ion-ios-gear position-absolute ly-nav2-i" hidden></i>' +
+                            '<i class="icon ion-ios-gear position-absolute ly-nav2-i" style="display:none;"></i>' +
                             '</li>');
                 }
             }
             
-            $("#wzTitle").after('<button onclick="addWz(1)" type="button" class="btn btn-link btn-block ly-create-wz-dw">' + 
+            $("#wzTitle").after('<button id="wzDw" onclick="addWz(1)" type="button" class="btn btn-link btn-block ly-create-wz-dw">' + 
             		' <i class="icon ion-plus-round"></i><span>在下方新建文章</span></button>');
 
         },
@@ -112,11 +112,12 @@
             //this.createWzTitle(type,wjId);
             
         },
-        initWzTitle:function() {
+        initWzTitle:function(type,wz) {
+        	
         	$("#wzTitle").children("li.ly-nav2-active").children("i.ly-nav2-i").hide();
         	$("#wzTitle").children("li.ly-nav2-active").removeClass("ly-nav2-active");
         	
-        	$("#wzTitle").prepend('<li class="nav-item ly-nav2-active ly-nav2-item position-relative">' +
+        	$("#wzTitle").prepend('<li id="'+ wz.id +'" class="nav-item ly-nav2-active ly-nav2-item position-relative" onclick=\'ly.note.openWzNr("'+ type +'","'+ wz.id +'")\'>' +
                     '<i class="icon ion-android-document position-absolute ly-nav2-il"></i>' +
                     '<div class="nav-link ly-nav2-item-link">' +
                     '<p class="text-truncate ly-nav2-item-t">无标题文章</p>' +
@@ -125,6 +126,11 @@
                     '<span class="ly-nav2-item-s">字数：0</span>' +
                     '<i class="icon ion-ios-gear position-absolute ly-nav2-i"></i>' +
                     '</li>');
+        	
+        	if (!$("#wzDw")[0]) {
+        		$("#wzTitle").after('<button id="wzDw" onclick="addWz(1)" type="button" class="btn btn-link btn-block ly-create-wz-dw">' + 
+        		' <i class="icon ion-plus-round"></i><span>在下方新建文章</span></button>');
+        	}
         },
         init:function(type,data) {
             ly.storage.setSession(type,data);
