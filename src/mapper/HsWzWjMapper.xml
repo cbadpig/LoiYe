@@ -31,7 +31,7 @@
   </select>
 
   <select id="selectMaxWzxh" resultType="java.lang.Integer">
-    SELECT MAX(wzxh) wzxh
+    SELECT IFNULL(MAX(wzxh),0) wzxh
     FROM t_hs_wzwj
     WHERE yh_id = #{yhId,jdbcType=INTEGER} AND wj_id = #{wjId,jdbcType=INTEGER}
   </select>
