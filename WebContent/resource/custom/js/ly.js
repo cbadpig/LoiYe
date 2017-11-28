@@ -117,7 +117,7 @@
         	$("#wzTitle").children("li.ly-nav2-active").children("i.ly-nav2-i").hide();
         	$("#wzTitle").children("li.ly-nav2-active").removeClass("ly-nav2-active");
         	
-        	$("#wzTitle").prepend('<li id="'+ wz.id +'" class="nav-item ly-nav2-active ly-nav2-item position-relative" onclick=\'ly.note.openWzNr("'+ type +'","'+ wz.id +'")\'>' +
+        	$("#wzTitle").append('<li id="'+ wz.id +'" class="nav-item ly-nav2-active ly-nav2-item position-relative" onclick=\'ly.note.openWzNr("'+ type +'","'+ wz.id +'")\'>' +
                     '<i class="icon ion-android-document position-absolute ly-nav2-il"></i>' +
                     '<div class="nav-link ly-nav2-item-link">' +
                     '<p class="text-truncate ly-nav2-item-t">无标题文章</p>' +
