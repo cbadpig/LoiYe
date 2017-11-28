@@ -17,6 +17,10 @@
 
 </head>
 <body>
+<div>
+asdf
+</div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 col-xl-2 ly-sidebar ly-sidebar-color">
@@ -86,9 +90,7 @@
                             $(window).resize(function() {
                                 ue.setHeight($(window).height()-111);
                             });
-                            $(function () {
-                                $('[data-toggle="popover"]').popover();
-                            })
+                           
                         </script>
                     </div>
                 </div>
@@ -98,14 +100,21 @@
 </div>
 <script>
     //Sortable.create(sort, { /* options */ });
-//    $('#i1').webuiPopover({
-//        width:80,
-//        height:100,
-//        padding:false,
-//        animation:'pop',
-//        content:$('#open').html(),
-//    });
-//    content:$('#open').remove();
+    
+    $(function(){
+    	$("#wzTitle").find("i:visible").click(function() {
+    		alert(123);
+    	});
+    });
+    
+    $("#test").webuiPopover({
+        width:80,
+        height:100,
+        padding:false,
+        animation:'pop',
+        content:$('#open').html(),
+    });
+    content:$('#open').remove(); 
 </script>
 </body>
 </html>

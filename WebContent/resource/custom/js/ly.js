@@ -124,7 +124,7 @@
                     '<p class="text-truncate ly-nav2-item-p">&nbsp;</p>' +
                     '</div>' +
                     '<span class="ly-nav2-item-s">字数：0</span>' +
-                    '<i class="icon ion-ios-gear position-absolute ly-nav2-i"></i>' +
+                    '<i id="test" class="icon ion-ios-gear position-absolute ly-nav2-i"></i>' +
                     '</li>');
         	
         	if (!$("#wzDw")[0]) {
